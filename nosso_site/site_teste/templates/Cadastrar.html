@@ -13,20 +13,21 @@
 	<title>Inserção</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-sm bg-dark">
+	 <nav class="navbar navbar-expand-sm bg-primary" >
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href="/crud/listagem">LISTAGEM</a>
+				<a class="nav-link " style="color:#f8f9fa" href="/nosso_site/login/">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/crud/insercao">NOVO</a>
+				<a class="nav-link" style="color:#f8f9fa" href="/nosso_site/login/">Login</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/crud/graficos">GRAFICOS</a>
+				<a class="nav-link" style="color:#f8f9fa" href="/nosso_site/cadastro">Cadastrar</a>
 			</li>
 		</ul>
 	</nav>
-	<br>
+	 <br>
+	 <br>
 	<div class="container">
 		<h2>{{titulo}}</h2>
 		<form action="/crud/salvar_insercao/" method="POST" name="frm_insercao" class="ml-3">
@@ -36,21 +37,16 @@
 				<input type="text" class="form-control" name="nome">
 			</div>
 			<div class="form-group">
-				<label for="idade">Idade:</label>
-				<input type="number" class="form-control" name="idade" min="1" max="125">
-			</div>
-			<div class="form-group">
-				<select class="form-control" name="sexo">
-					<option value="M">Sexo: Masculino</option>
-					<option value="F">Sexo: Feminino</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="salario">Salário:</label>
-				<input type="text" class="form-control" name="salario">
+				<label for="email">Idade:</label>
+				<input type="number" class="form-control" name="email" min="1" max="125">
 			</div>
 
-			<a href="/listagem/" class="btn btn-secondary" role="button">Cancelar</a>
+			<div class="form-group">
+				<label for="senha">Salário:</label>
+				<input type="text" class="form-control" name="senha">
+			</div>
+
+			<a href="/login/" class="btn btn-secondary" role="button">Cancelar</a>
 			<button type="submit" class="btn btn-success">Inserir</button>
 		</form>
 	</div>
