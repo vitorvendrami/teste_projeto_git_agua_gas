@@ -31,15 +31,12 @@ def login(request):
 
 @csrf_protect
 def confirmar_login(request):
-    nome = request.POST.get('inputEmailLogin')
+    email = request.POST.get('inputEmailLogin')
     senha = request.POST.get('inputPasswordLogin')
 
-    dados = Dado.objects.all()
-
-    usuario = Dado.objects.filter(nome=nome)
+    usuario = Dado.objects.filter(email=email).first()
 
     if usuario.senha == senha:
         return render(request, 'menu.html')
 
-    print(usuario)
     return render(request, 'login.html')
