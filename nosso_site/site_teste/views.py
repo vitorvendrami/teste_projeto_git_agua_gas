@@ -36,4 +36,4 @@ def confirmar_login(request):
     if usuario and usuario.senha == senha:
         return render(request, 'menu.html')
 
-    return render(request, 'menu.html')
+    return render(request, 'login.html')
