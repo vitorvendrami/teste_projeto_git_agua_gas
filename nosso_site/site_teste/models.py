@@ -8,3 +8,12 @@ class Dado(models.Model):
 
 	def __str__(self):
 		return self.nome
+
+
+class Livro(models.Model):
+	nome = models.CharField(max_length=80)
+	nPaginas = models.IntegerField()
+	autor = models.CharField(max_length=70)
+
+	def __str__(self):
+		return self.nome

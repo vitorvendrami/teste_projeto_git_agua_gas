@@ -22,9 +22,11 @@ def confirmar_cadastro(request):
 
     return render(request, 'Cadastrar.html')
 
+
 @csrf_protect
 def login(request):
     return render(request, 'login.html')
+
 
 @csrf_protect
 def confirmar_login(request):
