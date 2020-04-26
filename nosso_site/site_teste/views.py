@@ -18,9 +18,10 @@ def confirmar_cadastro(request):
         email=email,
         senha=senha
     )
+    dado = Dado.objects.all()
     usuario.save()
 
-    return render(request, 'Cadastrar.html')
+    return render(request, 'menu.html', {'dados':dado})
 
 @csrf_protect
 def login(request):
@@ -28,14 +29,15 @@ def login(request):
 
 @csrf_protect
 def confirmar_login(request):
-    nome = request.POST.get('nome')
-    senha = request.POST.get('senha')
+    nome = request.POST.get('inputEmailLogin')
+    senha = request.POST.get('inputPasswordLogin')
 
     dados = Dado.objects.all()
 
     usuario = Dado.objects.filter(nome=nome)
 
-    if usuario and usuario.senha == senha:
-        return render(request, 'menu.html', {'dado':dados})
+    if usuario.senha == senha:
+        return render(request, 'menu.html')
 
+    print(usuario)
     return render(request, 'login.html')

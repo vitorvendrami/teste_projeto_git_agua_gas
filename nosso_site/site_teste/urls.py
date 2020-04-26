@@ -7,7 +7,7 @@ urlpatterns = [
     path('site_teste/confirmar_login/', confirmar_login),
     path('nosso_site/cadastro/', cadastro),
     path('site_teste/confirmar_cadastro/', confirmar_cadastro),
-    path('/site_teste/listagem/<int:id>', menu),
-    path('/site_teste/edicao/<int:id>', menu),
-    path('/site_teste/delecao/<int:id>', menu),
+    path('site_teste/listagem/<int:id>', login),
+    path('site_teste/edicao/<int:id>', login),
+    path('site_teste/delecao/<int:id>', login),
 ]
