@@ -40,8 +40,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" action="/site_teste/confirmar_login/" method="POST" name="frm_login">
-                    {%crsf_token%}
+                <form class="form-horizontal" action="/site_teste/confirmar_login/" method="POST" name="frm_login">{%csrf_token%}
                     <div class="box-body">
                         <div class="form-group">
                             <label for="inputEmailLogin" class="col-sm-2 control-label">Email</label>
@@ -71,8 +70,7 @@
             <div class="container">
                 <div class="container bg-light">
                     <h4 class="text-center"> Cadastre aqui!</h4>
-                    <form class="form-horizontal" action="/site_teste/confirmar_cadastro/" method="POST" name="frm_login">
-                        {%crsf_token%}
+                    <form class="form-horizontal" action="/site_teste/confirmar_cadastro/" method="POST" name="frm_login">{%csrf_token%}
                         <div class="box-body">
 
                             <div class="form-group row">
