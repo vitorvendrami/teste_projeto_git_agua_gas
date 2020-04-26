@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
-from .models import Dado
+from .models import Dado, Livro
 
 
 def cadastro(request):
@@ -18,10 +18,10 @@ def confirmar_cadastro(request):
         email=email,
         senha=senha
     )
-    dado = Dado.objects.all()
+    dados = Dado.objects.all()
     usuario.save()
 
-    return render(request, 'menu.html', {'dados':dado})
+    return render(request, 'menu.html', {'dados': dados})
 
 
 @csrf_protect
@@ -40,3 +40,34 @@ def confirmar_login(request):
         return render(request, 'menu.html')
 
     return render(request, 'login.html')
+
+
+@csrf_protect
+def cadastrar_livro(request):
+    nome = request.POST.get('input-----------')
+    nPaginas = request.POST.get('input---------')
+    autor = request.POST.get('input---------')
+
+    livro = Livro(
+        nome=nome,
+        nPaginas=nPaginas,
+        autor=autor
+    )
+    livros = Livro.objects.all()
+    livro.Save()
+
+    return render(request, 'menu.html', {'livros': livros})
+
+
+@csrf_protect
+def deletar_livro(request, nome):
+    Livro.objects.filter(nome=nome).delete()
+
+    livros = Livro.objects.all()
+    return render(request, 'menu.html', {'livros': livros})
+
+
+@csrf_protect
+def listagem(request):  # Mostra a lista de livros
+    livros = Livro.objects.all()
+    return render(request, 'menu.html', {'livros': livros})
