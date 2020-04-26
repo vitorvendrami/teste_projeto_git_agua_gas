@@ -31,9 +31,11 @@ def confirmar_login(request):
     nome = request.POST.get('nome')
     senha = request.POST.get('senha')
 
+    dados = Dado.objects.all()
+
     usuario = Dado.objects.filter(nome=nome)
 
     if usuario and usuario.senha == senha:
-        return render(request, 'menu.html')
+        return render(request, 'menu.html', {'dado':dados})
 
     return render(request, 'login.html')
