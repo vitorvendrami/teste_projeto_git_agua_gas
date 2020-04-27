@@ -44,9 +44,9 @@ def confirmar_login(request):
 
 @csrf_protect
 def cadastrar_livro(request):
-    nome = request.POST.get('input-----------')
-    nPaginas = request.POST.get('input---------')
-    autor = request.POST.get('input---------')
+    nome = request.POST.get('inputNomeLivro')
+    nPaginas = request.POST.get('inputNPaginas')
+    autor = request.POST.get('inputNomeAutor')
 
     livro = Livro(
         nome=nome,
