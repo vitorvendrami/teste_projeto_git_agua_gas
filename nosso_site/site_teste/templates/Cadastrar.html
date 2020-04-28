@@ -52,24 +52,24 @@
 	 <br>
 	<div class="container">
 		<h2 class = "text-light">{{titulo}}</h2>
-		<form action="/crud/salvar_insercao/" method="POST" name="frm_insercao" class="ml-3">
+		<form action="/crud/confirmar_cadastro/" method="POST" name="frm_insercao" class="ml-3">
 		{% csrf_token %}
 			<div class="form-group">
-				<label for="nome">Nome:</label>
-				<input type="text" class="form-control" name="nome">
+				<label for="inputNameCadastro">Nome:</label>
+				<input type="text" class="form-control" name="inputNameCadastro">
 			</div>
 			<div class="form-group">
-				<label for="email">Idade:</label>
-				<input type="number" class="form-control" name="email" min="1" max="125">
+				<label for="inputEmail3Cadastro">Email:</label>
+				<input type="number" class="form-control" name="inputEmail3Cadastro" min="1" max="125">
 			</div>
 
 			<div class="form-group">
-				<label for="senha">Salário:</label>
-				<input type="text" class="form-control" name="senha">
+				<label for="inputEmail3Cadastro">Senha:</label>
+				<input type="text" class="form-control" name="inputEmail3Cadastro">
 			</div>
 
 			<a href="/login/" class="btn btn-secondary" role="button">Cancelar</a>
-			<button type="submit" class="btn btn-primary">Inserir</button>
+			<button type="submit" class="btn btn-primary">Ok</button>
 		</form>
 	</div>
 </body>

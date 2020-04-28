@@ -10,7 +10,7 @@
     <meta http-equiv='cache-control' content='no-cache'>
     <meta http-equiv='expires' content='0'>
     <meta http-equiv='pragma' content='no-cache'>
-    <title>Login</title>
+    <title>Menu</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-primary">
@@ -32,35 +32,71 @@
 <body>
 
 <div class="row">
-    <div class="col-3"></div>
-
-    <div class="col-8" >
-        <div class="container bg-light">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th><a href="/site_teste/ordenacao/id">ID</a></th>
-                    <th><a href="/site_teste/ordenacao/nome">Nome</a></th>
-                    <th><a href="/site_teste/ordenacao/idade">Email</a></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for dado in dados %}
-                <tr>
-                    <td nowrap="true">
-                        <a href="/site_teste/listagem/{{dado.id}}">{{dado.id}}</a>
-                    </td>
-                    <td nowrap="true">{{dado.nome}}</td>
-                    <td nowrap="true">{{dado.email}}</td>
-                    <td nowrap="true" align="right">
-                        <a href="/site_teste/edicao/{{dado.id}}" class="btn btn-primary" role="button">Editar</a>
-                        <a href="/site_teste/delecao/{{dado.id}}" class="btn btn-danger" role="button">Deletar</a>
-                    </td>
-                </tr>
-                {%endfor%}
-                </tbody>
-            </table>
+    <!-- AQUI DEVE SER INSERIDO UM MENU LATERAL, BOA SORTE AVNER -->
+    <div class="col-3 bg-light">
+        <div>
+            <a class="btn btn-block btn-lg" href="/site_teste/minhas_informacoes/{{Dado.id}}">Minhas Informações</a>
+            <a class="btn btn-block btn-lg" href="/site_teste/meus_livros/{{Dado.id}}">Meus Livros</a>
+            <a class="btn btn-block btn-lg" href="/site_teste/livros_venda/{{Dado.id}}">Livros a venda</a>
+            <a class="btn btn-block btn-lg" href="/site_teste/configuracoes/{{Dado.id}}">Configurações</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
+    </div>
+
+    <div class="col-8">
+        <div class="card-group">
+
+            <div class="card text-center">
+                <img src="imagens/capa.jpg" class="card-img">
+                <div class="card-header text-left">{{Dado.nome}}</div>
+                <div class="card-body">
+                    <h5 class="card-title">Veja aqui livros com ofertas!</h5>
+                    <p class="card-text">Confira os melhores e mais vendidos livros no Brasil!</p>
+                    <a href="#" class="btn btn-primary">Conferir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-group">
+            <div class="card text-center mb-8">
+                <div class="card-body">
+                    <h5 class="card-title">Romances</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center mb-8">
+                <div class="card-body">
+                    <h5 class="card-title">Ficções</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center mb-8">
+                <div class="card-body">
+                    <h5 class="card-title">Drama</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card text-center mb-8">
+                <div class="card-body">
+                    <h5 class="card-title">Suspenses</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+        </div>
+
+
     </div>
     <div class="col-1"></div>
 </div>
