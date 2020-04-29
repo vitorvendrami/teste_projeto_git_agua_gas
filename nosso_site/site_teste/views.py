@@ -76,7 +76,7 @@ def meus_livros(request):  # {% for livro in livros %} não funciona.
     global nome
     usuario = Dado.objects.filter(nome=nome).first()
     if usuario:
-        livros = usuario.livros
+        livros = usuario.livros.all
 
         return render(request, 'meus_livros.html', {'livros': livros})
 

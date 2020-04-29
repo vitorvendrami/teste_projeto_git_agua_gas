@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="site_teste" uuid="11b91e2e-75fb-4131-a45a-7d2e35f487c2">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Gilson Jr\Desktop\teste_projeto_git_agua_gas\nosso_site\site_teste.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>
