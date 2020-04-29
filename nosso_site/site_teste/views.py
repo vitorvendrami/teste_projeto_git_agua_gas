@@ -39,7 +39,7 @@ def confirmar_login(request):  # Ok!
 
     usuario = Dado.objects.filter(email=email).first()
 
-    if usuario.senha == senha:
+    if usuario and usuario.senha == senha:
         nome = usuario.nome
         return render(request, 'menu.html')
 
@@ -59,7 +59,6 @@ def minhas_informacoes(request):  # Ok!
 @csrf_protect
 def comprar_livro(request):
     global nome
-
     usuario = Dado.objects.filter(nome=nome).first()
 
     nome_livro = request.POST.get('inputNomeLivro')
@@ -72,17 +71,12 @@ def comprar_livro(request):
 
 
 @csrf_protect
-def meus_livros(request,id):  # {% for livro in livros %} não funciona.
-
-    usuario = Dado.objects.get(id=id).first()
-    print(usuario.nome)
+def meus_livros(request):  # {% for livro in livros %} não funciona.
+    global nome
+    usuario = Dado.objects.filter(nome=nome).first()
     if usuario:
-<<<<<<< HEAD
         livros = usuario.livros.all
 
-=======
-        livros = usuario.livros
->>>>>>> 9d765d30a067bee30d05be995335ec91cbdb2772
         return render(request, 'meus_livros.html', {'livros': livros})
 
 
@@ -122,8 +116,9 @@ def configuracoes(request):
 
 
 def consulta_livros(request):
-    consulta = request.POST.get('consulta')
-    campo = request.POST.get('campo')
+    nome = request.POST.get('consulta')
+    categoria = request.POST.get('campo')
 
-    titulo = 'Listagem de Pessoas'
-    return render(request, 'listagem.html', {'titulo': titulo, 'pessoas': pessoas})
+    livros = Livro.objects.filter(nome=nome, categoria=categoria)
+
+    return render(request, 'meus_livros.html', {'livros': livros})
