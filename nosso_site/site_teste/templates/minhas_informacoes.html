@@ -118,16 +118,14 @@
                 <thead>
                 <tr>
                     <th><a href="/site_teste/ordenacao/nome">Nome</a></th>
-                    <th><a href="/site_teste/ordenacao/idade">Email</a></th>
-                    <th><a href="/site_teste/ordenacao/id">Senha</a></th>
+                    <th><a href="/site_teste/ordenacao/email">Email</a></th>
+                    <th><a href="#">Senha</a></th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for dado in dados %}
                 <tr>
-                    <td nowrap="true">
-                        <a href="/site_teste/listagem/{{dado.id}}">{{dado.id}}</a>
-                    </td>
+
                     <td nowrap="true">{{dado.nome}}</td>
                     <td nowrap="true">{{dado.email}}</td>
                     <td nowrap="true">{{dado.senha}}</td>

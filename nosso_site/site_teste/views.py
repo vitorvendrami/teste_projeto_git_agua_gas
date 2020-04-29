@@ -104,3 +104,15 @@ def deletar_livro(request, nome):
 def livros_venda(request):  # Mostra a lista de livros.
     livros = Livro.objects.all()
     return render(request, 'menu.html', {'livros': livros})
+
+def configuracoes(request):
+    return render(request, 'Cadastrar.html')
+
+def consulta_livros(request):
+	consulta = request.POST.get('consulta')
+	campo = request.POST.get('campo')
+
+
+	titulo = 'Listagem de Pessoas'
+	return render(request, 'listagem.html', {'titulo': titulo, 'pessoas': pessoas})
+
