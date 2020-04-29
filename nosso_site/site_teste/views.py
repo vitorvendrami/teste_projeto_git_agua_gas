@@ -42,7 +42,7 @@ def confirmar_login(request):
     return render(request, 'login.html')
 
 
-def minhas_informacoes(request):
+def minhas_informacoes(request):  # Mostra os dados do usuário que está logado.
     if request.user.is_authenticated:
         usuario = request.user
 
