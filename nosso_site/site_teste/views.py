@@ -2,13 +2,15 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from .models import Dado, Livro
 
+nome = None
 
-def cadastro(request):
+
+def cadastro(request):  # Ok!
     return render(request, 'Cadastrar.html')
 
 
-@csrf_protect
-def confirmar_cadastro(request):
+def confirmar_cadastro(request):  # Ok!
+    global nome
     nome = request.POST.get('inputNameCadastro')
     email = request.POST.get('inputEmail3Cadastro')
     senha = request.POST.get('inputPasswordCadastro')
@@ -30,49 +32,53 @@ def login(request):
 
 
 @csrf_protect
-def confirmar_login(request):
+def confirmar_login(request):  # Ok!
+    global nome
     email = request.POST.get('inputEmailLogin')
     senha = request.POST.get('inputPasswordLogin')
 
     usuario = Dado.objects.filter(email=email).first()
 
     if usuario.senha == senha:
+        nome = usuario.nome
         return render(request, 'menu.html')
 
     return render(request, 'login.html')
 
 
-def minhas_informacoes(request):  # Mostra os dados do usuário que está logado.
-    if request.user.is_authenticated:
-        usuario = request.user
+def minhas_informacoes(request):  # Ok!
+    global nome
+    usuario = Dado.objects.filter(nome=nome).first()
 
-        nome = usuario.nome
-        email = usuario.email
-        senha = usuario.senha
+    email = usuario.email
+    senha = usuario.senha
 
-        return render(request, 'minhas_informacoes.html', {'nome': nome, 'email': email, 'senha': senha})
-
-
-@csrf_protect
-def comprar_livro(request, nome):
-    if request.user.is_authenticated:
-        usuario = request.user
-
-        livro = Livro.objects.filter(nome=nome).first()
-        if livro:
-            usuario.livros.add(livro)
-
-        livros = usuario.livros
-        return render(request, 'meus_livros.html', {'livros': livros})
+    return render(request, 'minhas_informacoes.html', {'nome': nome, 'email': email, 'senha': senha})
 
 
 @csrf_protect
-def meus_livros(request):  # Retorna a lista de livros do usuário que está logado.
-    if request.user.is_authenticated:
-        usuario = request.user
+def comprar_livro(request):
+    global nome
+
+    usuario = Dado.objects.filter(nome=nome).first()
+
+    nome_livro = request.POST.get('inputNomeLivro')
+    livro = Livro.objects.filter(nome=nome).first()
+    if livro:
+        usuario.livros.add(livro)
+
+    livros = usuario.livros
+    return render(request, 'meus_livros.html', {'livros': livros})
+
+
+@csrf_protect
+def meus_livros(request):  # Ok!
+    global nome
+    usuario = Dado.objects.filter(nome=nome).first()
+    if usuario:
         livros = usuario.livros
 
-        return render(request, 'meus_livros.html', {'livros': livros})
+    return render(request, 'meus_livros.html', {'livros': livros})
 
 
 @csrf_protect
@@ -101,6 +107,6 @@ def deletar_livro(request, nome):
 
 
 @csrf_protect
-def livros_venda(request):  # Mostra a lista de livros.
+def livros_venda(request):  # Ok!
     livros = Livro.objects.all()
     return render(request, 'menu.html', {'livros': livros})
