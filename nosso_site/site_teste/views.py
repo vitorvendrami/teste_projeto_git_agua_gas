@@ -43,6 +43,33 @@ def confirmar_login(request):
 
 
 @csrf_protect
+def comprar_livro(request, nome):
+    if request.user.is_authenticated:
+        usuario = request.user
+
+        livro = Livro.objects.filter(nome=nome).first()
+        if livro:
+            usuario.livros.add(livro)
+
+        livros = usuario.livros
+        return render(request, 'meus_livros.html', {'livros': livros})
+
+
+@csrf_protect
+def meus_livros(request):  # Retorna a lista de livros do usuário que está logado.
+    print('////////////////////////')
+    if request.user.is_authenticated:
+        usuario = request.user
+        livros = usuario.livros
+
+        print('---------------')
+        print(livros)
+        print('---------------')
+        return render(request, 'meus_livros.html', {'livros': livros})
+    print('////////////////////////')
+
+
+@csrf_protect
 def cadastrar_livro(request):
     nome = request.POST.get('inputNomeLivro')
     nPaginas = request.POST.get('inputNPaginas')
@@ -68,6 +95,6 @@ def deletar_livro(request, nome):
 
 
 @csrf_protect
-def listagem(request):  # Mostra a lista de livros
+def livros_venda(request):  # Mostra a lista de livros
     livros = Livro.objects.all()
     return render(request, 'menu.html', {'livros': livros})

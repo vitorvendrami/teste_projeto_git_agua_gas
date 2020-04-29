@@ -10,4 +10,5 @@ urlpatterns = [
     path('site_teste/listagem/<int:id>', login),
     path('site_teste/edicao/<int:id>', login),
     path('site_teste/delecao/<int:id>', login),
+    path('site_teste/meus_livros/', meus_livros),
 ]
