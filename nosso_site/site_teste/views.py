@@ -72,13 +72,13 @@ def comprar_livro(request):
 
 
 @csrf_protect
-def meus_livros(request):  # Ok!
+def meus_livros(request):  # {% for livro in livros %} não funciona.
     global nome
     usuario = Dado.objects.filter(nome=nome).first()
     if usuario:
         livros = usuario.livros
 
-    return render(request, 'meus_livros.html', {'livros': livros})
+        return render(request, 'meus_livros.html', {'livros': livros})
 
 
 @csrf_protect
@@ -111,14 +111,14 @@ def livros_venda(request):  # Ok!
     livros = Livro.objects.all()
     return render(request, 'menu.html', {'livros': livros})
 
+
 def configuracoes(request):
     return render(request, 'Cadastrar.html')
 
+
 def consulta_livros(request):
-	consulta = request.POST.get('consulta')
-	campo = request.POST.get('campo')
+    consulta = request.POST.get('consulta')
+    campo = request.POST.get('campo')
 
-
-	titulo = 'Listagem de Pessoas'
-	return render(request, 'listagem.html', {'titulo': titulo, 'pessoas': pessoas})
-
+    titulo = 'Listagem de Pessoas'
+    return render(request, 'listagem.html', {'titulo': titulo, 'pessoas': pessoas})
