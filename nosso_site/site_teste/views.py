@@ -72,12 +72,12 @@ def comprar_livro(request):
 
 
 @csrf_protect
-def meus_livros(request):  # {% for livro in livros %} não funciona.
-    global nome
-    usuario = Dado.objects.filter(nome=nome).first()
+def meus_livros(request,id):  # {% for livro in livros %} não funciona.
+
+    usuario = Dado.objects.get(id=id).first()
+    print(usuario.nome)
     if usuario:
         livros = usuario.livros
-
         return render(request, 'meus_livros.html', {'livros': livros})
 
 
