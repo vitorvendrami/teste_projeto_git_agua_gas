@@ -42,6 +42,17 @@ def confirmar_login(request):
     return render(request, 'login.html')
 
 
+def minhas_informacoes(request):
+    if request.user.is_authenticated:
+        usuario = request.user
+
+        nome = usuario.nome
+        email = usuario.email
+        senha = usuario.senha
+
+        return render(request, 'minhas_informacoes.html', {'nome': nome, 'email': email, 'senha': senha})
+
+
 @csrf_protect
 def comprar_livro(request, nome):
     if request.user.is_authenticated:
@@ -57,16 +68,11 @@ def comprar_livro(request, nome):
 
 @csrf_protect
 def meus_livros(request):  # Retorna a lista de livros do usuário que está logado.
-    print('////////////////////////')
     if request.user.is_authenticated:
         usuario = request.user
         livros = usuario.livros
 
-        print('---------------')
-        print(livros)
-        print('---------------')
         return render(request, 'meus_livros.html', {'livros': livros})
-    print('////////////////////////')
 
 
 @csrf_protect
@@ -95,6 +101,6 @@ def deletar_livro(request, nome):
 
 
 @csrf_protect
-def livros_venda(request):  # Mostra a lista de livros
+def livros_venda(request):  # Mostra a lista de livros.
     livros = Livro.objects.all()
     return render(request, 'menu.html', {'livros': livros})
