@@ -39,8 +39,20 @@ def confirmar_login(request):  # Ok!
 
     usuario = Dado.objects.filter(email=email).first()
 
+    '''
+    livro = Livro(  # Se quiser adicionar um livro novo manualmente.
+        nome='Harry Potter',
+        nPaginas='365',
+        autor='JK.Rowling',
+        categoria='Fantasia',
+    )
+    livros = Livro.objects.all()
+    livro.save()
+    '''
+
     if usuario and usuario.senha == senha:
         nome = usuario.nome
+        # usuario.livros.add(livro) ---> Se quiser adicionar um livro manualmente.
         return render(request, 'menu.html')
 
     return render(request, 'login.html')
